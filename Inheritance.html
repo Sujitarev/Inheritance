@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title></title>
+
+
+
+		<script type="text/javascript">
+
+            // 1. Create two constructor functions person and student.
+            // 2. Create a property for person.
+            // 3. Inherit the property of the function person into student.
+            // 4. Now change the property in student function.
+
+			// Define the person constructor
+			var person = function(firstName){
+			 this.firstName = firstName; //property of person
+			}
+
+			person.prototype.sayHello = function(){
+			  alert("Hello, I'm " + this.firstName);
+			};
+
+
+			// Define the student constructor
+			var student = function(firstName,age){
+
+			  person.call(this, firstName);
+			  
+			 this.age = age;  //property of student
+			}
+
+			// Create a student.prototype object that inherits from person.prototype
+			student.prototype = Object.create(person.prototype);
+
+			// Replace the "sayHello" method
+			student.prototype.sayHello = function(){
+			  alert("Hello, I'm " + this.firstName + ". My age is "
+			              + this.age + ".");
+			};
+
+			// Example usage:
+			var student1 = new student("Sameer ", "25");
+			student1.sayHello();
+
+
+		</script>
+
+	</head>
+
+	<body>
+
+		OK! Done.
+
+	</body>
+
+</html>
